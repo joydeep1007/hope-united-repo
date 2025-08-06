@@ -45,11 +45,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-hope-green" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
+                <span className="text-gray-300">+91 9163805618</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-hope-green" />
-                <span className="text-gray-300">123 Hope Street, Unity City, UC 12345</span>
+                <span className="text-gray-300">173, DAS Para Road, Near Yuba Sammilini Club, Thakurpukur-700063</span>
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 pt-8 mt-8 text-center">
           <p className="text-gray-300">
-            © 2024 HopeUnited. All rights reserved. Building a better tomorrow together.
+            © 2025 HopeUnited. All rights reserved. Building a better tomorrow together.
           </p>
         </div>
       </div>

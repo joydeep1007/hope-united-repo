@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Users, TreePine, Award, ArrowRight, CheckCircle } from "lucide-react";
-import heroImage from "@/assets/hero-ngo.jpg";
+import heroImage from "@/assets/image.png";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeInDown, staggerContainer, staggerItem, scaleIn, hoverScale, hoverLift } from "@/lib/motion";
 
