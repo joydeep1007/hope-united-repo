@@ -1,12 +1,23 @@
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { fadeInDown, staggerContainer, staggerItem } from "@/lib/motion";
+import { useState } from "react";
+import { X, Menu } from "lucide-react";
 
 const Navigation = () => {
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const isActive = (path: string) => location.pathname === path;
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <motion.nav 
@@ -127,17 +138,154 @@ const Navigation = () => {
             variants={staggerItem}
           >
             <motion.button 
-              className="text-foreground/70 hover:text-foreground"
+              className="text-foreground/70 hover:text-foreground p-2"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </motion.button>
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className="fixed inset-0 bg-black/50 z-40 md:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeMobileMenu}
+            />
+            
+            {/* Mobile Menu */}
+            <motion.div
+              className="fixed top-0 right-0 h-full w-64 bg-background border-l border-border shadow-xl z-50 md:hidden"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            >
+              <div className="flex flex-col h-full">
+                {/* Mobile Menu Header */}
+                <div className="flex items-center justify-between p-4 border-b border-border">
+                  <motion.div 
+                    className="flex items-center space-x-2"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    <div className="w-6 h-6 bg-gradient-to-r from-trust-blue to-hope-green rounded-full"></div>
+                    <span className="text-lg font-bold text-foreground">HopeUnited</span>
+                  </motion.div>
+                  <motion.button
+                    onClick={closeMobileMenu}
+                    className="p-2 text-foreground/70 hover:text-foreground"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, rotate: -90 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <X className="w-5 h-5" />
+                  </motion.button>
+                </div>
+
+                {/* Mobile Menu Items */}
+                <nav className="flex-1 px-4 py-6">
+                  <motion.div
+                    className="space-y-4"
+                    variants={staggerContainer}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    <motion.div variants={staggerItem}>
+                      <Link
+                        to="/"
+                        onClick={closeMobileMenu}
+                        className={cn(
+                          "block py-3 px-4 rounded-lg text-base font-medium transition-all duration-200",
+                          isActive("/") 
+                            ? "bg-primary text-primary-foreground shadow-md" 
+                            : "text-foreground/80 hover:bg-accent hover:text-accent-foreground"
+                        )}
+                      >
+                        <motion.span
+                          whileHover={{ x: 4 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          Home
+                        </motion.span>
+                      </Link>
+                    </motion.div>
+                    
+                    <motion.div variants={staggerItem}>
+                      <Link
+                        to="/volunteer"
+                        onClick={closeMobileMenu}
+                        className={cn(
+                          "block py-3 px-4 rounded-lg text-base font-medium transition-all duration-200",
+                          isActive("/volunteer") 
+                            ? "bg-primary text-primary-foreground shadow-md" 
+                            : "text-foreground/80 hover:bg-accent hover:text-accent-foreground"
+                        )}
+                      >
+                        <motion.span
+                          whileHover={{ x: 4 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          Volunteer
+                        </motion.span>
+                      </Link>
+                    </motion.div>
+                    
+                    <motion.div variants={staggerItem}>
+                      <Link
+                        to="/about"
+                        onClick={closeMobileMenu}
+                        className={cn(
+                          "block py-3 px-4 rounded-lg text-base font-medium transition-all duration-200",
+                          isActive("/about") 
+                            ? "bg-primary text-primary-foreground shadow-md" 
+                            : "text-foreground/80 hover:bg-accent hover:text-accent-foreground"
+                        )}
+                      >
+                        <motion.span
+                          whileHover={{ x: 4 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          About Us
+                        </motion.span>
+                      </Link>
+                    </motion.div>
+                  </motion.div>
+                </nav>
+
+                {/* Mobile Menu Footer */}
+                <motion.div 
+                  className="p-4 border-t border-border"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <p className="text-sm text-muted-foreground text-center">
+                    Building Hope, Changing Lives
+                  </p>
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
