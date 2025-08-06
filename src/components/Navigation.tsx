@@ -169,7 +169,8 @@ const Navigation = () => {
             
             {/* Mobile Menu */}
             <motion.div
-              className="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-900 border-l border-border shadow-xl z-50 md:hidden"
+              className="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50 md:hidden"
+              style={{ backgroundColor: '#ffffff' }}
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -177,7 +178,7 @@ const Navigation = () => {
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
-                <div className="flex items-center justify-between p-4 border-b border-border">
+                <div className="flex items-center justify-between p-4 border-b border-gray-200">
                   <motion.div 
                     className="flex items-center space-x-2"
                     initial={{ opacity: 0, x: 20 }}
@@ -185,11 +186,11 @@ const Navigation = () => {
                     transition={{ delay: 0.1 }}
                   >
                     <div className="w-6 h-6 bg-gradient-to-r from-trust-blue to-hope-green rounded-full"></div>
-                    <span className="text-lg font-bold text-foreground">HopeUnited</span>
+                    <span className="text-lg font-bold text-gray-900">HopeUnited</span>
                   </motion.div>
                   <motion.button
                     onClick={closeMobileMenu}
-                    className="p-2 text-foreground/70 hover:text-foreground"
+                    className="p-2 text-gray-600 hover:text-gray-900"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     initial={{ opacity: 0, rotate: -90 }}
@@ -215,8 +216,8 @@ const Navigation = () => {
                         className={cn(
                           "block py-3 px-4 rounded-lg text-base font-medium transition-all duration-200",
                           isActive("/") 
-                            ? "bg-primary text-primary-foreground shadow-md" 
-                            : "text-foreground/80 hover:bg-accent hover:text-accent-foreground"
+                            ? "bg-blue-600 text-white shadow-md" 
+                            : "text-gray-800 hover:bg-gray-100"
                         )}
                       >
                         <motion.span
@@ -235,8 +236,8 @@ const Navigation = () => {
                         className={cn(
                           "block py-3 px-4 rounded-lg text-base font-medium transition-all duration-200",
                           isActive("/volunteer") 
-                            ? "bg-primary text-primary-foreground shadow-md" 
-                            : "text-foreground/80 hover:bg-accent hover:text-accent-foreground"
+                            ? "bg-blue-600 text-white shadow-md" 
+                            : "text-gray-800 hover:bg-gray-100"
                         )}
                       >
                         <motion.span
@@ -255,8 +256,8 @@ const Navigation = () => {
                         className={cn(
                           "block py-3 px-4 rounded-lg text-base font-medium transition-all duration-200",
                           isActive("/about") 
-                            ? "bg-primary text-primary-foreground shadow-md" 
-                            : "text-foreground/80 hover:bg-accent hover:text-accent-foreground"
+                            ? "bg-blue-600 text-white shadow-md" 
+                            : "text-gray-800 hover:bg-gray-100"
                         )}
                       >
                         <motion.span
@@ -272,12 +273,12 @@ const Navigation = () => {
 
                 {/* Mobile Menu Footer */}
                 <motion.div 
-                  className="p-4 border-t border-border"
+                  className="p-4 border-t border-gray-200"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <p className="text-sm text-muted-foreground text-center">
+                  <p className="text-sm text-gray-600 text-center">
                     Building Hope, Changing Lives
                   </p>
                 </motion.div>
