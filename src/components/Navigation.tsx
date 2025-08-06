@@ -169,7 +169,7 @@ const Navigation = () => {
             
             {/* Mobile Menu */}
             <motion.div
-              className="fixed top-0 right-0 h-full w-64 bg-background border-l border-border shadow-xl z-50 md:hidden"
+              className="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-900 border-l border-border shadow-xl z-50 md:hidden"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
