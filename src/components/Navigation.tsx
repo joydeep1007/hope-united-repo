@@ -169,15 +169,16 @@ const Navigation = () => {
             
             {/* Mobile Menu */}
             <motion.div
-              className="fixed top-0 right-0 h-full w-64 bg-black shadow-2xl z-50 md:hidden"
+              className="fixed top-0 right-0 h-full w-64 shadow-2xl z-50 md:hidden"
+              style={{ backgroundColor: '#000000' }}
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
             >
-              <div className="flex flex-col h-full">
+              <div className="flex flex-col h-full" style={{ backgroundColor: '#000000' }}>
                 {/* Mobile Menu Header */}
-                <div className="flex items-center justify-between p-4 border-b border-gray-700">
+                <div className="flex items-center justify-between p-4 border-b border-gray-700" style={{ backgroundColor: '#000000' }}>
                   <motion.div 
                     className="flex items-center space-x-2"
                     initial={{ opacity: 0, x: 20 }}
@@ -201,7 +202,7 @@ const Navigation = () => {
                 </div>
 
                 {/* Mobile Menu Items */}
-                <nav className="flex-1 px-4 py-6">
+                <nav className="flex-1 px-4 py-6" style={{ backgroundColor: '#000000' }}>
                   <motion.div
                     className="space-y-4"
                     variants={staggerContainer}
@@ -273,6 +274,7 @@ const Navigation = () => {
                 {/* Mobile Menu Footer */}
                 <motion.div 
                   className="p-4 border-t border-gray-700"
+                  style={{ backgroundColor: '#000000' }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
