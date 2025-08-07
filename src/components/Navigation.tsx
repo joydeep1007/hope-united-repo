@@ -170,15 +170,15 @@ const Navigation = () => {
             {/* Mobile Menu */}
             <motion.div
               className="fixed top-0 right-0 h-full w-64 shadow-2xl z-50 md:hidden"
-              style={{ backgroundColor: '#000000' }}
+              style={{ backgroundColor: '#ffffff' }}
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
             >
-              <div className="flex flex-col h-full" style={{ backgroundColor: '#000000' }}>
+              <div className="flex flex-col h-full" style={{ backgroundColor: '#ffffff' }}>
                 {/* Mobile Menu Header */}
-                <div className="flex items-center justify-between p-4 border-b border-gray-700" style={{ backgroundColor: '#000000' }}>
+                <div className="flex items-center justify-between p-4 border-b border-gray-300" style={{ backgroundColor: '#ffffff' }}>
                   <motion.div 
                     className="flex items-center space-x-2"
                     initial={{ opacity: 0, x: 20 }}
@@ -186,11 +186,11 @@ const Navigation = () => {
                     transition={{ delay: 0.1 }}
                   >
                     <div className="w-6 h-6 bg-gradient-to-r from-trust-blue to-hope-green rounded-full"></div>
-                    <span className="text-lg font-bold text-white">HopeUnited</span>
+                    <span className="text-lg font-bold text-black">HopeUnited</span>
                   </motion.div>
                   <motion.button
                     onClick={closeMobileMenu}
-                    className="p-2 text-gray-300 hover:text-white"
+                    className="p-2 text-gray-700 hover:text-black"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     initial={{ opacity: 0, rotate: -90 }}
@@ -202,7 +202,7 @@ const Navigation = () => {
                 </div>
 
                 {/* Mobile Menu Items */}
-                <nav className="flex-1 px-4 py-6" style={{ backgroundColor: '#000000' }}>
+                <nav className="flex-1 px-4 py-6" style={{ backgroundColor: '#ffffff' }}>
                   <motion.div
                     className="space-y-4"
                     variants={staggerContainer}
@@ -217,7 +217,7 @@ const Navigation = () => {
                           "block py-3 px-4 rounded-lg text-base font-medium transition-all duration-200",
                           isActive("/") 
                             ? "bg-hope-green text-white shadow-md" 
-                            : "text-gray-200 hover:bg-gray-800 hover:text-white"
+                            : "text-gray-800 hover:bg-gray-100 hover:text-black"
                         )}
                       >
                         <motion.span
@@ -237,7 +237,7 @@ const Navigation = () => {
                           "block py-3 px-4 rounded-lg text-base font-medium transition-all duration-200",
                           isActive("/volunteer") 
                             ? "bg-hope-green text-white shadow-md" 
-                            : "text-gray-200 hover:bg-gray-800 hover:text-white"
+                            : "text-gray-800 hover:bg-gray-100 hover:text-black"
                         )}
                       >
                         <motion.span
@@ -257,7 +257,7 @@ const Navigation = () => {
                           "block py-3 px-4 rounded-lg text-base font-medium transition-all duration-200",
                           isActive("/about") 
                             ? "bg-hope-green text-white shadow-md" 
-                            : "text-gray-200 hover:bg-gray-800 hover:text-white"
+                            : "text-gray-800 hover:bg-gray-100 hover:text-black"
                         )}
                       >
                         <motion.span
@@ -273,13 +273,13 @@ const Navigation = () => {
 
                 {/* Mobile Menu Footer */}
                 <motion.div 
-                  className="p-4 border-t border-gray-700"
-                  style={{ backgroundColor: '#000000' }}
+                  className="p-4 border-t border-gray-300"
+                  style={{ backgroundColor: '#ffffff' }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <p className="text-sm text-gray-400 text-center">
+                  <p className="text-sm text-gray-600 text-center">
                     Building Hope, Changing Lives
                   </p>
                 </motion.div>
