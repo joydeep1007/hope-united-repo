@@ -34,7 +34,7 @@ const Volunteer = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3002'}/api/volunteers`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'https://web-production-459c.up.railway.app/'}/api/volunteers`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
