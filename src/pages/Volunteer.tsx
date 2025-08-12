@@ -19,8 +19,9 @@ const Volunteer = () => {
     interest: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.phone || !formData.interest) {
       toast({
@@ -30,12 +31,42 @@ const Volunteer = () => {
       return;
     }
 
-    toast({
-      title: "Application Submitted Successfully!",
-      description: "Thank you for your interest in volunteering. We'll contact you soon.",
-    });
-    
-    setFormData({ name: "", email: "", phone: "", interest: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3002'}/api/volunteers`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Application Submitted Successfully!",
+          description: "Thank you for your interest in volunteering. We'll contact you soon.",
+        });
+        setFormData({ name: "", email: "", phone: "", interest: "", message: "" });
+      } else {
+        toast({
+          title: "Submission Failed",
+          description: result.message || "Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Network Error",
+        description: "Please check your connection and try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -159,8 +190,8 @@ const Volunteer = () => {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full">
-                    Submit Application
+                  <Button type="submit" className="w-full" disabled={isSubmitting}>
+                    {isSubmitting ? "Submitting..." : "Submit Application"}
                   </Button>
                 </form>
               </CardContent>
