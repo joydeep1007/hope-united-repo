@@ -34,8 +34,10 @@ const Volunteer = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL || 'https://web-production-459c.up.railway.app/'}/api/volunteers`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'https://web-production-459c.up.railway.app'}/api/volunteers`, {
         method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
